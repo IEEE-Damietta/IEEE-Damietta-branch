@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .section__header {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight  text-white leading-tight drop-shadow-lg
+  }
+  
+  .section_description {
+    @apply mt-6 text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed opacity-90
+  }
+  .select_box {
+    @apply w-[200px] appearance-none bg-white/10 backdrop-blur-md text-white 
+           border border-white/20 rounded-xl px-4 py-2 pr-10
+           shadow-lg focus:outline-none focus:ring-2 focus:ring-white/40
+           hover:bg-white/20 transition duration-200
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+@keyframes diverFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(-2deg);
+  }
+  25% {
+    transform: translateY(-15px) translateX(5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-30px) translateX(-5px) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-15px) translateX(3px) rotate(-1deg);
+  }
+}
+
+.animate-diver {
+  animation: diverFloat 6s ease-in-out infinite;
+}

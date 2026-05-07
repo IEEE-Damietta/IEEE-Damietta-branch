@@ -1,0 +1,17 @@
+{
+  "folders": [
+	{
+		"path": "../IEEE-BACKEND"
+	},
+	{
+		"path": "../IEEE DASHBOARD"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "IEEE-FRONTEND",
+    "liveServer.settings.port": 3003
+  }
+}

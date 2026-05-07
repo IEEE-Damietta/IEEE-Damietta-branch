@@ -1,0 +1,3329 @@
+
+
+/* ============================================
+   CSS - IEEE Damietta Student Branch
+   ============================================ */
+
+/* ==================== 1. Reset & Base Styles ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+html, body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==================== 2. Container & Layout ==================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-section {
+    display: none;
+    min-height: 100vh;
+}
+
+.page-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== 3. Header & Navigation ==================== */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+
+
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 2. تقريب المسافة بين الصورة والنص */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px; /* 3. تقريب المسافة بين الروابط (كانت 30px) */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+#tsparticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  
+  pointer-events: none; 
+  opacity: .4;
+}
+
+
+
+
+
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    /* color: #333; */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #568ac2;
+    background: rgba(0, 86, 179, 0.1);
+}
+
+.btn-join {
+    background: #0056b3;
+    color: white !important;
+    padding: 10px 25px !important;
+    border-radius: 25px;
+}
+
+.btn-join:hover {
+    background: #004494;
+    transform: scale(1.05);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    padding: 5px;
+}
+
+/* ==================== 4. Hero Section ==================== */
+.hero {
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: slideInDown 0.8s ease;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: slideInUp 0.8s ease;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== 5. Page Hero ==================== */
+.page-hero {
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.page-hero p {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+/* ==================== 6. Sections ==================== */
+.section {
+    padding: 60px 0;
+}
+
+/* .section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+} */
+
+/* ==================== 7. Buttons ==================== */
+.btn-primary {
+    background: #0056b3;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+}
+
+.btn-primary:hover {
+    background: #004494;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4);
+}
+
+.btn-event {
+    background: #00a8e8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-event:hover {
+    background: #0088cc;
+    transform: translateY(-2px);
+}
+
+.btn-read-more {
+    background: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-read-more:hover {
+    background: #004494;
+}
+
+/* ==================== تنسيق قسم About Us المحسن ==================== */
+
+
+
+
+.about-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center;
+}
+
+/* Vision & Mission */
+.vision-mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.vision-card,
+.mission-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.vision-card:hover,
+.mission-card:hover {
+    transform: translateY(-10px);
+}
+
+.vision-card i,
+.mission-card i {
+    font-size: 50px;
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+.vision-card h3,
+.mission-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.vision-card p,
+.mission-card p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Achievements */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.achievement-item {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.achievement-item:hover {
+    transform: scale(1.05);
+}
+
+.achievement-item i {
+    font-size: 40px;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.achievement-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.achievement-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Partners */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.partner-item {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.partner-item:hover {
+    transform: translateY(-5px);
+}
+
+.partner-item i {
+    font-size: 40px;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.partner-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.partner-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-box i {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.stat-box h3 {
+    font-size: 36px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.stat-box p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+
+
+/* ==================== تنسيق قسم الفريق التنفيذي ==================== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+}
+
+.team-photo {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.team-card:hover .team-photo img {
+    transform: scale(1.1);
+}
+
+.team-info {
+    padding: 20px;
+}
+
+.team-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.team-info .role {
+    font-size: 16px;
+    color: #0056b3;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.team-info .year {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.team-contact {
+    padding: 0 20px 20px;
+}
+
+.contact-btn {
+    background: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-btn:hover {
+    background: #004494;
+}
+
+/* Contact Modal */
+.contact-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #0056b3;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.modal-role {
+    font-size: 16px;
+    color: #0056b3;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.modal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.modal-link:hover {
+    transform: scale(1.05);
+}
+
+.modal-link.facebook {
+    background: #1877f2;
+    color: white;
+}
+
+.modal-link.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+}
+
+.modal-link.linkedin {
+    background: #0077b5;
+    color: white;
+}
+
+.modal-link i {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        padding: 30px;
+    }
+}
+
+
+
+/* ==================== 9. Stats Grid ==================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.stat-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stat-box i {
+    font-size: 40px;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.stat-box h3 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* ==================== 10. Events Grid ==================== */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.event-card .date {
+    background: #0056b3;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.event-card h3 {
+    font-size: 20px;
+    /* padding: 20px; */
+    color: #333;
+}
+
+.event-card p {
+    padding: 0 20px 20px;
+    color: #666;
+}
+
+/* ==================== 11. Team Grid ==================== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.team-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.team-card .photo {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+}
+
+.team-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.team-card .role {
+    color: #0056b3;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.team-card .year {
+    color: #666;
+    font-size: 14px;
+}
+
+/* ==================== 12. Blog Cards ==================== */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.blog-image {
+    height: 200px;
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-date {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.blog-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.blog-excerpt {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* ==================== 15. FAQ Accordion ==================== */
+.faq-container {
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.faq-question {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #f5f5f5;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+    color: #0056b3;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: #666;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 20px 20px;
+    max-height: 500px;
+}
+
+/* ==================== 16. Join Section ==================== */
+.join-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.join-info {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.join-info h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.benefits {
+    list-style: none;
+}
+
+.benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.benefits li:last-child {
+    border-bottom: none;
+}
+
+.benefits li i {
+    font-size: 24px;
+    color: #0056b3;
+    margin-top: 5px;
+}
+
+.benefits li strong {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.benefits li p {
+    color: #666;
+    font-size: 14px;
+}
+
+.join-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.join-form h3 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.join-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.join-form input,
+.join-form select {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.join-form input:focus,
+.join-form select:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+.join-form button {
+    background: #0056b3;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.join-form button:hover {
+    background: #004494;
+    transform: translateY(-2px);
+}
+
+/* ==================== 17. Footer ==================== */
+
+
+
+footer {
+    background: #333;
+    color: white;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Location على الشمال (اليسار) */
+.footer-location {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+    order: 1; /* يخليه على الشمال */
+}
+
+/* Social Links في الوسط */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    order: 2; /* يخليه في الوسط */
+}
+
+/* Contact Us على اليمين (اليمين) */
+.footer-contact {
+    flex: 1;
+    min-width: 200px;
+    text-align: right;
+    order: 3; /* يخليه على اليمين */
+}
+
+.footer-location h3,
+.footer-contact h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #00a8e8;
+}
+
+.footer-location p,
+.footer-contact p {
+    font-size: 14px;
+    margin: 20px 0;
+    color: #ccc;
+}
+
+.social-links a {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.social-links a:hover {
+    color: #00a8e8;
+}
+
+.footer-bottom {
+    border-top: 1px solid #555;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-location,
+    .footer-contact {
+        text-align: center;
+        order: 1;
+    }
+    
+    .social-links {
+        order: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================== 18. Responsive Design ==================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #1E293B !important;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        gap: 15px;
+        border-radius: 50px;
+    }
+
+    nav ul.active {
+        display: flex;
+        animation: fade-up 0.2s ease-out forwards;
+    }
+
+    .nav-link {
+        padding: 10px 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-join {
+        padding: 8px 20px !important;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .page-hero h1 {
+        font-size: 32px;
+    }
+
+    .page-hero p {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .section h2 {
+        font-size: 24px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .events-grid,
+    .blog-grid,
+    .committees-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .join-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chapter-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links {
+        gap: 15px;
+    }
+
+    .social-links a {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo span {
+        font-size: 18px;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+
+    .stat-box {
+        padding: 20px;
+    }
+
+    .stat-box i {
+        font-size: 30px;
+    }
+
+    .stat-box h3 {
+        font-size: 24px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .committee-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+
+    .blog-image {
+        height: 150px;
+        font-size: 40px;
+    }
+
+    .faq-question {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .faq-answer {
+        padding: 0 15px 15px;
+        font-size: 14px;
+    }
+
+    .join-form input,
+    .join-form select {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .join-form button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* ==================== 19. Additional Utilities ==================== */
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #0056b3;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.4);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: #004494;
+    transform: translateY(-5px);
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Text Utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* Spacing Utilities */
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mt-4 { margin-top: 40px; }
+
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.mb-4 { margin-bottom: 40px; }
+
+/* ==================== 20. Print Styles ==================== */
+@media print {
+    header,
+    footer,
+    .menu-toggle,
+    .scroll-to-top {
+        display: none !important;
+    }
+
+    .page-section {
+        display: block !important;
+        page-break-after: always;
+    }
+
+    .page-section.active {
+        display: none;
+    }
+}
+
+
+
+
+
+/* ==================== تنسيق قسم الفريق التنفيذي ==================== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+}
+
+.team-photo {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.team-card:hover .team-photo img {
+    transform: scale(1.1);
+}
+
+.team-info {
+    padding: 20px;
+}
+
+.team-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.team-info .role {
+    font-size: 16px;
+    color: #0056b3;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.team-info .year {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.team-contact {
+    padding: 0 20px 20px;
+}
+
+.contact-btn {
+    background: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-btn:hover {
+    background: #004494;
+}
+
+/* Contact Modal */
+.contact-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #0056b3;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.modal-role {
+    font-size: 16px;
+    color: #0056b3;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.modal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.modal-link:hover {
+    transform: scale(1.05);
+}
+
+.modal-link.facebook {
+    background: #1877f2;
+    color: white;
+}
+
+.modal-link.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+}
+
+.modal-link.linkedin {
+    background: #0077b5;
+    color: white;
+}
+
+.modal-link i {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        padding: 30px;
+    }
+}
+
+
+
+
+/* ==================== AI Chatbot ==================== */
+.chatbot-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10001;
+    width: 60px;
+    height: 60px;
+}
+
+.chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,86,179,0.4);
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 24px;
+    animation: pulse 2s infinite;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(0,86,179,0.6);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 8px 25px rgba(0,86,179,0.4); }
+    50% { box-shadow: 0 8px 35px rgba(0,86,179,0.7); }
+    100% { box-shadow: 0 8px 25px rgba(0,86,179,0.4); }
+}
+
+.chatbot-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 20px 20px 5px 5px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: none;
+}
+
+.chatbot-window.active {
+    display: block;
+    transform: scale(1);
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.chatbot-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.chatbot-messages {
+    height: 340px;
+    overflow-y: auto;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    animation: messageSlide 0.3s ease;
+}
+
+@keyframes messageSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.message.user .message-content {
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.message.bot .message-content {
+    background: white;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.chatbot-input {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+}
+
+.chatbot-input input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
+}
+
+.chatbot-send {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.chatbot-send:hover {
+    transform: scale(1.1);
+}
+
+.chatbot-send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .chatbot-window {
+        width: 90vw;
+        height: 70vh;
+        right: 5vw;
+    }
+}
+
+
+
+
+
+
+/* تنسيق كروت الأحداث */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.event-card {
+    /* background: white; */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+}
+
+.event-image {
+    position: relative;
+    height: 200px;
+}
+
+.event-image img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.event-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ffc107;
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.event-content { padding: 20px; }
+
+.event-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: #1877F2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.event-btn:hover { background: #145dbf; }
+
+
+
+
+
+.join-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #00629b;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #00629b;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #00629b;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #004a75;
+    transform: scale(1.02);
+}
+.page-section {  min-height: 400px; }
+.container { width: 90%; max-width: 1200px; margin: auto; }
+
+/* ستايل الـ Countdown */
+.countdown-container {
+    display: flex; justify-content: center; gap: 15px;
+    background: #00629b; color: white; padding: 20px;
+    border-radius: 15px; margin-bottom: 30px;
+}
+.countdown-item { text-align: center; flex: 1; }
+.countdown-item span { font-size: 2rem; font-weight: bold; display: block; }
+
+/* ستايل الـ Join Us Form */
+.join-container {
+    max-width: 500px; margin: 0 auto; background: #f9f9f9;
+    padding: 30px; border-radius: 15px; border: 1px solid #ddd;
+}
+.input-group { margin-bottom: 15px; text-align: right; }
+.input-group label { display: block; margin-bottom: 5px; color: #333; }
+.input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+.submit-btn {
+    width: 100%; background: #00629b; color: white; border: none;
+    padding: 12px; border-radius: 5px; cursor: pointer; font-size: 1.1rem;
+}
+
+
+
+
+
+
+
+
+
+
+.about-section-header {
+    position: relative;
+    width: 100%;
+    /* كبرنا الارتفاع هنا */
+    min-height: 500px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* إعدادات الصورة */
+    background-image: url('public/images/events/photo_2026-03-17_00-20-03.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* تأثير تثبيت الصورة عند السكرول (اختياري بس شيك جداً) */
+    background-attachment: scroll; 
+/*     
+    padding: 100px 0; مساحة إضافية عشان الصورة تظهر أكتر */
+}
+
+/* طبقة تعتيم عشان الكلام يظهر (مهم جداً) */
+.about-section-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* تدرج أسود خفيف بيخلي الصورة شيك والكلام واضح */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); 
+    z-index: 1;
+}
+
+.about-section-header .about-content-box {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.about-section-header h1 {
+    font-size: 4rem; /* كبرنا الخط */
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* ظل وضوح */
+    letter-spacing: 2px;
+}
+
+.about-section-header p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+
+/* تفعيل التأثير للأجهزة القوية (الكمبيوتر) فقط */
+@media (min-width: 1024px) {
+    .about-section-header {
+        background-attachment: fixed;
+    }
+}
+
+/* حل مشكلة الموبايل */
+@media (max-width: 768px) {
+    .about-section-header {
+        min-height: 300px; /* تقليل الارتفاع شوية للموبايل */
+        background-attachment: scroll !important; /* إجبار الصورة على الظهور بشكل عادي */
+        background-position: center center;
+    }
+    
+    .about-section-header h1 {
+        font-size: 2.2rem; /* تصغير الخط عشان ميبوظش */
+    }
+}
+
+
+/* تنسيق صفحة Coming Soon للـ Blogs */
+.blogs-coming-soon {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative; 
+    z-index: 1;
+}
+
+.coming-soon-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.icon-box {
+    font-size: 4rem;
+    color: #00629b;
+    margin-bottom: 20px;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.coming-soon-content h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.coming-soon-content p {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* شريط التقدم الوهمي */
+.launch-progress {
+    width: 100%;
+    height: 10px;
+    /* background: #eee; */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 65%; /* تقدر تغير النسبة دي حسب ما تحب */
+    height: 100%;
+    background: #00629b;
+    border-radius: 10px;
+    animation: loading-bar 2s ease-in-out forwards;
+}
+
+.stay-tuned {
+    font-weight: bold;
+    color: #00629b;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+/* الأنميشن - حركات جمالية */
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes loading-bar {
+    0% { width: 0; }
+    100% { width: 65%; }
+}
+
+/* تعديلات الموبايل */
+@media (max-width: 768px) {
+    .coming-soon-content h1 { font-size: 2rem; }
+    .icon-box { font-size: 3rem; }
+}
+
+header {
+    /* background: rgba(255, 255, 255, 0.1) !important; */
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* خليه بيضاوي */
+    width: calc(100% - 40px);
+}
+
+
+
+.icon-box i {
+    text-shadow: 0 0 20px rgba(0, 98, 155, 0.4);
+}
+
+.stay-tuned {
+    text-shadow: 0 0 10px rgba(0, 98, 155, 0.2);
+    animation: pulse-text 2s infinite alternate;
+}
+
+@keyframes pulse-text {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+ 
+.blobs {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    filter: blur(80px); 
+    opacity: 0.4;
+}
+
+.blob-1 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: hsla(202, 98%, 42%, 0.662);
+    border-radius: 50%;
+    top: -100px; left: -100px;
+    animation: blob-move 15s infinite alternate;
+}
+
+.blob-2 {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: #078bffbc;
+    border-radius: 50%;
+    bottom: 100px; right: 100px;
+    animation: blob-move 10s infinite alternate-reverse;
+}
+
+@keyframes blob-move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(100px, 100px); }
+} 
+
+
+
+
+
+
+
+
+.ieee-bg-text {
+    position: fixed; /* ثابتة مع السكرول */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40vw; /* حجم عملاق بالنسبة لعرض الشاشة */
+    font-weight: 900;
+    
+    /* جعل النص مفرغ (Outline) */
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(8, 176, 232, 0.138); /* لون IEEE الأزرق بشفافية 5% فقط */
+    
+    z-index: -1; /* خلف كل العناصر */
+    user-select: none; /* عشان الزائر ميعرفش يعمل لها Highlight */
+    pointer-events: none; /* عشان متبطأش الضغط على الأزرار */
+    letter-spacing: 20px;
+    
+    /* أنيميشن حركة خفيفة جداً للنبض */
+    animation: floating-ieee 10s ease-in-out infinite alternate;
+}
+
+@keyframes floating-ieee {
+    from {
+        transform: translate(-50%, -48%) scale(1);
+    }
+    to {
+        transform: translate(-50%, -52%) scale(1.05);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+.btn-portal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 2px solid #00629bc7; /* لون IEEE الأزرق */
+    color: #00629b;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+/* تأثير عند الوقوف بالماوس */
+.btn-portal:hover {
+    background-color: #00629b;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 98, 155, 0.2);
+}
+
+/* أيقونة السهم الصغيرة */
+.btn-portal i {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.btn-portal:hover i {
+    transform: translate(3px, -3px); /* حركة السهم لفوق ويمين */
+}
+
+/* أنيميشن نبض خفيف عشان يلفت الانتباه */
+@keyframes pulse-border {
+    0% { box-shadow: 0 0 0 0 rgba(0, 98, 155, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 98, 155, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 98, 155, 0); }
+}
+
+.btn-portal {
+    animation: pulse-border 2s infinite;
+}
+
+
+
+header {
+    /* background: rgba(255, 255, 255, 0.1) !important; */
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* خليه بيضاوي */
+    width: calc(100% - 40px);
+}
+
+
+
+.scrolling-text {
+    position: absolute;
+    font-size: 15rem;
+    font-weight: 900;
+    color: rgba(0, 98, 155, 0.03); /* شفافية تكاد لا تُرى */
+    white-space: nowrap;
+    z-index: -1;
+    top: 100px;
+    left: 0;
+    user-select: none;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+/* ################################################################# ###################################################
+################################################################# ##################################################*/
+
+
+
+
+/* تحديثات */    /* تحديثات */    /* تحديثات */
+
+
+
+
+
+
+
+
+
+
+
+
+       /* ==================== تنسيق زر Learn more في الصفحة الرئيسية ==================== */
+/* عشان الزر يطلع على الشمال (يسار) */
+
+
+
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.about-content .btn-primary {
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    margin-left: auto; /* عشان الزر يطلع على الشمال */
+    margin-right: 0;
+}/* عشان الزر يطلع على الشمال */
+
+
+/* عشان الزر يطلع على الشمال في الموبايل */
+@media (max-width: 768px) {
+    .about-content .btn-primary {
+        display: block;
+        margin: 20px auto 0;
+        text-align: center;
+        float: none;
+    }
+}
+     
+
+
+
+
+        /* Intro Animation Styles */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0056b3, #00a8e8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Typing Effect Styles */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.hero-content h1,
+.hero-content p,
+.about-content h2,
+.about-content p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.hero-content h1.active,
+.hero-content p.active,
+.about-content h2.active,
+.about-content p.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+.intro-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-content {
+    text-align: center;
+    color: white;
+    animation: fadeIn 1s ease;
+}
+
+.intro-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: zoomIn 1s ease;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro-text h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    min-height: 50px;
+}
+
+.intro-btn button {
+    background: white;
+    color: #0056b3;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.intro-btn button:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+
+
+
+
+        /* ==================== CSS جديد للصفحات المضافة ==================== */
+
+
+
+
+
+
+
+
+        .about-section-header {
+    position: relative;
+    width: 100%;
+    /* كبرنا الارتفاع هنا */
+    min-height: 500px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* إعدادات الصورة */
+    background-image: url('../public/images/events/photo_2026-03-22_18-26-37.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* تأثير تثبيت الصورة عند السكرول (اختياري بس شيك جداً) */
+    background-attachment: scroll; 
+    
+    /* padding: 100px 0; مساحة إضافية عشان الصورة تظهر أكتر */
+}
+
+/* طبقة تعتيم عشان الكلام يظهر (مهم جداً) */
+.about-section-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* تدرج أسود خفيف بيخلي الصورة شيك والكلام واضح */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); 
+    z-index: 1;
+}
+
+.about-section-header .about-content-box {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.about-section-header h1 {
+    font-size: 4rem; /* كبرنا الخط */
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* ظل وضوح */
+    letter-spacing: 2px;
+}
+
+.about-section-header p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+@media (min-width: 1024px) {
+    .about-section-header {
+        background-attachment: fixed;
+    }
+}
+
+/* حل مشكلة الموبايل */
+@media (max-width: 768px) {
+    .about-section-header {
+        min-height: 300px; /* تقليل الارتفاع شوية للموبايل */
+        background-attachment: scroll !important; /* إجبار الصورة على الظهور بشكل عادي */
+        background-position: center center;
+    }
+    
+    .about-section-header h1 {
+        font-size: 2.2rem; /* تصغير الخط عشان ميبوظش */
+    }
+}
+
+
+
+        
+        /* صفحة المدونة */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, #0056b3, #00a8e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .blog-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .btn-read-more {
+            background: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-read-more:hover {
+            background: #004494;
+        }
+        
+
+        /* تنسيق صفحة Coming Soon للـ Blogs */
+.blogs-coming-soon {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fdfdfd; /* لون خلفية هادئ */
+    text-align: center;
+}
+
+.coming-soon-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.icon-box {
+    font-size: 4rem;
+    color: #00629b;
+    margin-bottom: 20px;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.coming-soon-content h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.coming-soon-content p {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* شريط التقدم الوهمي */
+.launch-progress {
+    width: 100%;
+    height: 10px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 65%; /* تقدر تغير النسبة دي حسب ما تحب */
+    height: 100%;
+    background: #00629b;
+    border-radius: 10px;
+    animation: loading-bar 2s ease-in-out forwards;
+}
+
+.stay-tuned {
+    font-weight: bold;
+    color: #00629b;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+/* الأنميشن - حركات جمالية */
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes loading-bar {
+    0% { width: 0; }
+    100% { width: 65%; }
+}
+
+/* تعديلات الموبايل */
+@media (max-width: 768px) {
+    .coming-soon-content h1 { font-size: 2rem; }
+    .icon-box { font-size: 3rem; }
+}
+
+
+
+
+        
+
+       
+        /* صفحة الأسئلة الشائعة */
+        .faq-container {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #f5f5f5;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        /* ==================== تنسيقات عامة ==================== */
+        .page-hero {
+            background: linear-gradient(135deg, #0056b3, #00a8e8);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .page-hero p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ==================== تحسينات الهيدر ==================== */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 15px;
+            z-index: 1000;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            
+        }
+
+         
+
+        header .container {
+    display: flex;
+    /* التعديل السحري هنا: flex-start بيخلي العناصر مرصوصة ورا بعض مش مطرودة للأطراف */
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 20px;
+    /* خليها row عشان اللوجو يكون شمال والمنيو يمين، أو row-reverse لو عايز العكس */
+    flex-direction: row-reverse; 
+    gap: 50px; /* دي المسافة اللي بين اللوجو وأول كلمة في المنيو.. تقدر تصغرها أو تكبرها براحتك */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* المسافة بين كل كلمة (Home, About, etc) */
+    align-items: center;
+    direction: ltr;
+    margin: 0;
+    padding: 0;
+}
+
+/* عشان نضمن إن مفيش حاجة تانية بتزق العناصر */
+nav {
+    flex-grow: 0; /* بيمنع الـ Nav إنه يتمدد وياخد مساحة الصفحة كلها */
+}
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            direction: ltr;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0056b3;
+        }
+        
+        
+
+
+        .nav-link {
+    text-decoration: none;
+    /* color: #333;  */
+    font-weight: 500;
+    transition: color 0.3s;
+    cursor: pointer;
+    display: inline-block; /* عشان الزر يثبت شكله */
+    padding: 5px 10px; /* مسافة داخلية عشان الكلمة تطلع جنب بعض */
+}
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: #0056b3;
+        }
+        
+        
+        .btn-join {
+    background: #0056b3;
+    color: #ffffff !important; /* لون النص أبيض واضح */
+    padding: 10px 25px; /* مسافة داخلية عشان الكلمة تطلع جنب بعض */
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold; /* عشان الخط يكون واضح */
+    text-decoration: none; /* عشان ما يطلعش خط تحت الكلمة */
+    display: inline-block; /* عشان الزر يثبت شكله */
+}
+
+
+
+
+
+
+        .btn-join:hover {
+            background: #004494;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        /* ==================== تحسينات الأقسام ==================== */
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        .btn-primary {
+            background: #0056b3;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #004494;
+        }
+        
+        .btn-event {
+            background: #00a8e8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-event:hover {
+            background: #0088cc;
+        }
+        
+        
+        /* ==================== تحسينات التجاوب ==================== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .page-hero h1 {
+                font-size: 32px;
+            }
+            
+            .blog-grid,
+            .committees-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+
+            /* ==================== تحسينات الفوتر ==================== */
+  /* ==================== تحسينات الفوتر ==================== */
+footer {
+    background: #333;
+    color: white;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Location على الشمال (اليسار) */
+.footer-location {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+    order: 3; /* يخليه على الشمال */
+}
+
+/* Social Links في الوسط */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    order: 2; /* يخليه في الوسط */
+}
+
+/* Contact Us على اليمين (اليمين) */
+.footer-contact {
+    flex: 1;
+    min-width: 200px;
+    text-align: right;
+    order: 2; /* يخليه على اليمين */
+}
+
+.footer-location h3,
+.footer-contact h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #00a8e8;
+}
+
+.footer-location p,
+.footer-contact p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #ccc;
+}
+
+.social-links a {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.social-links a:hover {
+    color: #00a8e8;
+}
+
+.footer-bottom {
+    border-top: 1px solid #555;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-location,
+    .footer-contact {
+        text-align: center;
+        order: 1;
+    }
+    
+    .social-links {
+        order: 0;
+    }
+}
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+/* تنسيق كروت الأحداث */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+}
+
+.event-image {
+    position: relative;
+    height: 200px;
+}
+
+.event-image img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.event-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ffc107;
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.event-content { padding: 20px; }
+
+.event-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: #1877F2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.event-btn:hover { background: #145dbf; }
+
+
+
+
+
+
+
+/* تنسيق قسم الـ Season Opening الجديد */
+.special-event-wrapper {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.season-card {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: flex-end;
+}
+
+.season-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.season-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* تدريج أسود عشان الكلام يبان بوضوح */
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+}
+
+.season-text {
+    color: #fff;
+    text-align: right;
+    width: 100%;
+}
+
+.event-badge {
+    background: #00629b;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.season-text h3 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.season-text p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+}
+
+.main-event-btn {
+    background: #fff;
+    color: #00629b;
+    padding: 12px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.main-event-btn:hover {
+    background: #00629b;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* تعديلات الموبايل */
+@media (max-width: 768px) {
+    .season-card { height: 400px; }
+    .season-text h3 { font-size: 2rem; }
+    .season-text p { font-size: 1rem; }
+    .season-overlay { padding: 20px; }
+}
+
+
+
+
+.event-card {
+  /* width: 320px; */
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  font-family: sans-serif;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.event-content {
+  padding: 16px;
+}
+
+.badge {
+  background: #00c896;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.desc {
+  font-size: 14px;
+  color: #666;
+  height: 40px;
+  overflow: hidden;
+}
+
+.meta {
+  font-size: 13px;
+  margin: 10px 0;
+  color: #444;
+}
+
+.extra {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #111;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #00c896;
+}
