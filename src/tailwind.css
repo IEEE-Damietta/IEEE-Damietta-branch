@@ -10,7 +10,7 @@
   .section_description {
     @apply mt-6 text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed opacity-90
   }
-  .select_box {
+  .form_input {
     @apply w-[200px] appearance-none bg-white/10 backdrop-blur-md text-white 
            border border-white/20 rounded-xl px-4 py-2 pr-10
            shadow-lg focus:outline-none focus:ring-2 focus:ring-white/40

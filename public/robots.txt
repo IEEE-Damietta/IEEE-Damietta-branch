@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ieeedamietta.org/sitemap.xml

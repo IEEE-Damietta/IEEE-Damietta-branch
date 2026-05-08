@@ -2,9 +2,8 @@ import {
   hideAllPages,
   showActivePage,
   setActiveLink,
-  closeMenu
+  closeMenu,
 } from "./utils/dom.js";
-
 
 const routes = {
   home: "home",
@@ -23,7 +22,7 @@ function navigateTo(pageId) {
 
   // Animate the incoming page
   // const page = document.getElementById(pageId);
-//   if (page) slideIn(page);
+  //   if (page) slideIn(page);
 
   // Update the URL
   history.pushState({ pageId }, "", `/${pageId}`);
@@ -54,6 +53,11 @@ export function initRouter() {
   handleBackButton();
 
   // Show the correct page on first load based on current URL
-  const initialPage = window.location.pathname.replace("/", "");
+  const initialPage =
+    window.location.pathname.replace("/", "") || sessionStorage.redirect;
+
+  sessionStorage.removeItem("redirect");
+
   navigateTo(initialPage);
 }
+

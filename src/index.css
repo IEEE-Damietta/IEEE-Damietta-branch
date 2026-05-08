@@ -958,7 +958,7 @@ nav ul {
     align-items: flex-start;
     gap: 15px;
     padding: 15px 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #6b7280;
 }
 
 .benefits li:last-child {
@@ -973,12 +973,12 @@ nav ul {
 
 .benefits li strong {
     display: block;
-    color: #333;
+    color: white;
     margin-bottom: 5px;
 }
 
 .benefits li p {
-    color: #666;
+    color: #eee;
     font-size: 14px;
 }
 
