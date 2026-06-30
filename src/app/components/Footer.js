@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-location">
             <h3>Location</h3>
-            <p>جامعة دمياط - مصر</p>
-            <p>دمياط، مصر</p>
+            <p>New Damietta University - Egypt</p>
+            <p>Damietta - Egypt</p>
           </div>
 
           <div className="social-links">

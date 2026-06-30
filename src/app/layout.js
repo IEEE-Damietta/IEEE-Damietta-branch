@@ -1,15 +1,19 @@
 import "./globals.css";
 import ParticleBackground from "./components/bubbles";
 import PageTransition from "./components/PageTransition";
+import { AuthProvider } from "./hooks/AuthContext";
+import LoadingOverlay from "./components/LoadingOverlay";
 
-// تحويل الـ HTML tags إلى Next.js Metadata
+// Convert HTML metadata tags into Next.js metadata format
 export const metadata = {
+  metadataBase: new URL("https://ieeedamietta.org"),
   title: {
     default: "IEEE Damietta Student Branch",
-    template: "%s | IEEE Damietta", // دي بتخلي العناوين الفرعية تظهر تلقائياً كدا: Events | IEEE Damietta
+    template: "%s | IEEE Damietta",
   },
+  applicationName: "IEEE Damietta Student Branch",
   description:
-    "الموقع الرسمي لـ IEEE فرع جامعة دمياط. استكشف الورش، سجل في الفعاليات، تابع تاسكاتك، وانضم لأكبر مجتمع تقني في الجامعة.",
+    "The official website of the IEEE Damietta University Branch. Explore workshops, register for events, track your tasks, and join the university's largest technical community.",
   keywords: [
     "IEEE",
     "IEEE Damietta",
@@ -18,44 +22,54 @@ export const metadata = {
     "Engineering",
     "Workshops",
     "Events",
-    "IEEE Egypt",
+    "Student Branch",
+    "Technical Community",
   ],
-  authors: [{ name: "IEEE" }],
+  authors: [{ name: "IEEE Damietta Student Branch" }],
+  publisher: "IEEE Damietta Student Branch",
   manifest: "/site.webmanifest",
-
-  // الـ Canonical Link
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
   alternates: {
     canonical: "https://ieeedamietta.org/",
   },
-
-  // كود التحقق من جوجل (Google Site Verification)
-  // verification: {
-  //   google: "sfXaPh5_WrV57K0cfUxNzmVyFpqX8U3Ibn4ZNRq5uSM",
-  // },
-
-  // Open Graph / Facebook
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
   openGraph: {
     type: "website",
     url: "https://ieeedamietta.org/",
     title: "IEEE Damietta Branch | Empowering Engineering Students",
     description:
-      "سجل في ورش العمل، سلم تاسكاتك، وتابع درجاتك في مكان واحد. انضم لرحلة التعلم مع IEEE Damietta.",
+      "Register for workshops, follow events, and join the IEEE technical community at Damietta University.",
     images: [
       {
-        url: "/images/logo.jpg", // 💡 ملحوظة: شيلنا ./public لأن Next بيقرأ من public تلقائي
+        url: "/images/logo.jpg",
         width: 1200,
         height: 630,
         alt: "IEEE Damietta Logo",
       },
     ],
   },
-
-  // Twitter
   twitter: {
-    card: "summary_large_image", // القيمة الصح هنا بتكون نوع الكارت مش مسار الصورة
+    card: "summary_large_image",
     title: "IEEE Damietta Branch",
-    description: "Join the largest technical community in Damietta University.",
-    images: ["/images/logo.jpg"], // مسار الصورة مباشر من الـ public
+    description:
+      "Join the IEEE Damietta technical community and register for workshops and events.",
+    images: ["/images/logo.jpg"],
   },
 };
 
@@ -63,8 +77,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full antialiased dark">
       <body className="bg-slate-800 text-white">
-        <PageTransition>{children}</PageTransition>
-        <ParticleBackground />
+        <AuthProvider>
+          <LoadingOverlay />
+          <PageTransition>{children}</PageTransition>
+          <ParticleBackground />
+        </AuthProvider>
 
         <div className="ieee-bg-text">IEEE</div>
         <div className="blobs">

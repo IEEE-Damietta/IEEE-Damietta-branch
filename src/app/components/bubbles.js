@@ -9,24 +9,18 @@ const ParticleBackground = () => {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    // Optional: Do something when particles are fully loaded
-    console.log(container);
-  }, []);
-
   return (
     <ParticlesProvider init={particlesInit}>
       <Particles
         id="tsparticles"
         className="fixed inset-0 -z-10 pointer-events-none text-[#0e212e]"
-        particlesLoaded={particlesLoaded}
         options={{
           background: {
             color: "#18212f",
           },
           particles: {
             number: {
-              value: 80,
+              value: 35,
               density: {
                 enable: true,
                 area: 800,

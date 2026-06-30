@@ -1,7 +1,19 @@
 // import { LoginForm } from "@/app/login/components/login-form";
-import RegisterForm from "./components/register-form"
+import RegisterForm from "./components/register-form";
 
-export const metadata = { title: "Register" };
+export const metadata = {
+  title: "Register",
+  description:
+    "Register for IEEE Damietta membership and gain access to workshops, events, and student branch activities.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 export default function LoginPage() {
   return (

@@ -2,11 +2,9 @@
 
 import "./questions.css";
 import { FaAngleDown } from "react-icons/fa";
-import { useRef } from "react";
 
 const Questions = () => {
   const toggleQuestion = (e) => {
-    console.log(e.target.tagName);
     if (e.target.className == "faq-question" || e.target.tagName === "SPAN" || e.target.tagName == "svg" || e.target.tagName == "path")
       e.target.closest(".faq-item").classList.toggle("active");
   };

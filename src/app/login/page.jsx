@@ -2,7 +2,19 @@ import { GalleryVerticalEnd } from "lucide-react";
 
 import { LoginForm } from "./components/login-form";
 
-export const metadata = { title: "Login" };
+export const metadata = {
+  title: "Login",
+  description:
+    "Secure login page for IEEE Damietta members. Access your account and event registrations.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 export default function LoginPage() {
   return (

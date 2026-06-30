@@ -133,7 +133,7 @@ const Members = () => {
 
           <MemberBox
             name="Ahmed Eldeeb"
-            role="Webmaster"
+            role="Web Developer"
             photo="photo_2026-03-12_02-14-19.jpg"
             delay={0.9}
             modal={openModalFor === "Ahmed Eldeeb"}
@@ -148,6 +148,41 @@ const Members = () => {
                 "https://www.instagram.com/eldeeb_9?igsh=dWxlYWNnM3hzdHU2&utm_source=qr",
               linkedin: "https://www.linkedin.com/in/ahmed-eldeeb-696983370",
             }}
+          />
+          <MemberBox
+            name="Ahmed Safwat"
+            role="Web Developer"
+            photo="PHOTO-2026-06-24-20-06-03.jpg"
+            delay={1}
+            modal={openModalFor === "Ahmed Safwat"}
+            modalOnOpen={() => setOpenModalFor("Ahmed Safwat")}
+            modalOnClose={() => setOpenModalFor(null)}
+            memberDetails={{
+              name: "Ahmed Safwat",
+              role: "Webmaster",
+              facebook: "https://www.facebook.com/share/1DAPgXpjHL/",
+              instagram: "https://www.instagram.com/insafwat/",
+              linkedin: "https://www.linkedin.com/in/safwat96/",
+            }}
+            customeImageClass="object-top"
+          />
+          <MemberBox
+            name="Mariam Farahat"
+            role="UI/UX Designer"
+            photo="PHOTO-2026-06-24-20-40-03.jpg"
+            delay={1}
+            modal={openModalFor === "Mariam Farahat"}
+            modalOnOpen={() => setOpenModalFor("Mariam Farahat")}
+            modalOnClose={() => setOpenModalFor(null)}
+            memberDetails={{
+              name: "Mariam Farahat",
+              role: "UI/UX Designer",
+              facebook: "https://www.facebook.com/share/1c4tm8ZTgK/",
+              instagram:
+                "https://www.instagram.com/mariam.farahat.756?igsh=NTZvYjUwZ2J1aTRj",
+              linkedin: "https://www.linkedin.com/in/mariam-farahat/",
+            }}
+            customeImageClass="object-top"
           />
         </div>
       </div>

@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import NavLink from "./NavLink";
+import { useAuth } from "../hooks/AuthContext";
 
 export default function MobileAside({ open, onClose }) {
+
+  const auth = useAuth();
+
   useEffect(() => {
     function onKey(e) {
       if (e.key === "Escape") onClose();
@@ -87,8 +91,21 @@ export default function MobileAside({ open, onClose }) {
                 className="block w-full px-5 py-3"
               />
             </li>
+            {auth.user && (
+              <li
+                style={{ transitionDelay: "140ms" }}
+                className={`transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
+              >
+                <NavLink
+                  name="profile"
+                  route="/profile"
+                  asListItem={false}
+                  className="block w-full px-5 py-3"
+                />
+              </li>
+            )}
             <li
-              style={{ transitionDelay: "140ms" }}
+              style={{ transitionDelay: "200ms" }}
               className={`transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
             >
               <NavLink
@@ -99,7 +116,7 @@ export default function MobileAside({ open, onClose }) {
               />
             </li>
             <li
-              style={{ transitionDelay: "200ms" }}
+              style={{ transitionDelay: "260ms" }}
               className={`transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
             >
               <NavLink
@@ -111,7 +128,7 @@ export default function MobileAside({ open, onClose }) {
             </li>
 
             <li
-              style={{ transitionDelay: "260ms" }}
+              style={{ transitionDelay: "320ms" }}
               className={`mt-4 transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
             >
               <Link

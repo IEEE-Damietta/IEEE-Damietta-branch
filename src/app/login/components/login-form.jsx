@@ -1,21 +1,64 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { cn } from "@/lib/utils";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-  FieldSeparator,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+  FieldError,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { z } from "zod";
+import { supabase } from "../../supabase";
+import { useRouter } from "next/navigation";
 
-export function LoginForm({
-  className,
-  ...props
-}) {
+const loginSchema = z.object({
+  email: z.string().email("Enter a valid email address."),
+  password: z.string().min(8, "Password must contain at least 8 characters."),
+});
+
+export function LoginForm({ className, ...props }) {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    control,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const router = useRouter();
+
+
+  const handleFormSubmit = async (values) => {
+    const {data, error} = await supabase.auth.signInWithPassword({
+      email: values.email,
+      password: values.password,
+    });
+
+    if (error) {
+      setError("root", {
+        message: error,
+      });
+      return;
+    }
+
+    router.push("/");
+
+  }
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form
+      className={cn("flex flex-col gap-6", className)}
+      {...props}
+      onSubmit={handleSubmit(handleFormSubmit)}
+    >
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Login to your account</h1>
@@ -29,9 +72,11 @@ export function LoginForm({
             id="email"
             type="email"
             placeholder="m@example.com"
-            required
             className="bg-background"
+            {...register("email")}
+            aria-invalid={errors.email ? "true" : undefined}
           />
+          <FieldError errors={errors.email ? [errors.email] : []} />
         </Field>
         <Field>
           <div className="flex items-center">
@@ -46,10 +91,13 @@ export function LoginForm({
           <Input
             id="password"
             type="password"
-            required
             className="bg-background"
+            {...register("password")}
+            aria-invalid={errors.password ? "true" : undefined}
           />
+          <FieldError errors={errors.password ? [errors.password] : []} />
         </Field>
+        <FieldError errors={errors.root ? [errors.root.message] : []} />
         <Field>
           <Button type="submit">Login</Button>
         </Field>

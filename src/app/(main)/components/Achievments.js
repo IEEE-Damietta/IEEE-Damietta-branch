@@ -54,25 +54,25 @@ const Achievments = () => {
           <CounterBox
             icon="/images/icons/members.png"
             alt="members"
-            target={500}
+            target={350}
             label="Active Members"
           />
           <CounterBox
             icon="/images/icons/calendar.png"
             alt="calendar"
-            target={200}
+            target={5}
             label="Annual Events"
           />
           <CounterBox
             icon="/images/icons/awards.png"
             alt="awards"
-            target={100}
+            target={5}
             label="Local Awards"
           />
           <CounterBox
             icon="/images/icons/partners.png"
             alt="partners"
-            target={10}
+            target={8}
             label="Corporate Partners"
           />
         </div>

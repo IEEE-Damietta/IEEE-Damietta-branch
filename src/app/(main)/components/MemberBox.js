@@ -4,7 +4,7 @@ import { IoMdMail } from "react-icons/io";
 import { motion } from "framer-motion";
 import MembersContactModal from "./MembersContactModal";
 
-const MemberBox = ({ name, role, photo, delay,modal, modalOnOpen, modalOnClose, memberDetails }) => {
+const MemberBox = ({ name, role, photo, delay,modal, modalOnOpen, modalOnClose, memberDetails, customeImageClass="" }) => {
   return (
     <>
       <motion.div
@@ -16,20 +16,22 @@ const MemberBox = ({ name, role, photo, delay,modal, modalOnOpen, modalOnClose, 
           delay: delay,
         }}
         viewport={{ once: true, amount: 0.2 }}
-        className="text-center flex-1 min-w-62.5 max-w-75 p-6 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-sm shadow-lg text-white relative overflow-hidden"
+        className="text-center flex-1 min-w-62.5 max-w-75 p-6 rounded-2xl bg-white/10 border border-white/15 shadow-lg text-white relative overflow-hidden"
       >
         <div className="h-56 w-56 m-auto">
           <Image
             src={`/images/branch-members/${photo}`}
             alt={name}
-            className="rounded-full object-cover w-full h-full"
+            className={`rounded-full object-cover w-full h-full ${customeImageClass}`}
             width={250}
             height={250}
           />
         </div>
         <div className="p-5">
           <h3 className="text-white mb-2.5 text-xl">{name}</h3>
-          <p className="text-ieee-primary mb-1.25 text-[16px] font-bold">{role}</p>
+          <p className="text-ieee-primary mb-1.25 text-[16px] font-bold">
+            {role}
+          </p>
           <p className="text-[#666] mb-3.5 text-[14px]">2025-2026</p>
         </div>
         <div className="team-contact">

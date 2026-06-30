@@ -5,9 +5,14 @@ import Image from "next/image";
 import NavLink from "./NavLink";
 import Link from "next/link";
 import MobileAside from "./MobileAside";
+import { useAuth } from "../hooks/AuthContext";
+import { useEffect } from "react";
+import {supabase} from '../supabase'
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
+
+  const { user, profile } = useAuth();
 
   return (
     <nav className="mx-4 md:mx-32 px-6 bg-slate-700/20 backdrop-blur-lg border-b border-[#ffffff1a] shadow sticky top-3 rounded-full z-100">
@@ -28,12 +33,28 @@ const Nav = () => {
           <NavLink name="home" route="/" />
           <NavLink name="Events" route="/events" />
           <NavLink name="Blogs" route="/blogs" />
-          <Link
-            href="/register"
-            className="px-6 py-2 font-bold rounded-full text-white bg-ieee-primary hover:bg-[#004494] transition-colors"
-          >
-            Join now
-          </Link>
+          {!user && (
+            <Link
+              href="/register"
+              className="px-6 py-2 font-bold rounded-full text-white bg-ieee-primary hover:bg-[#004494] transition-colors"
+            >
+              Join now
+            </Link>
+          )}
+          {profile && (
+            <Link href="/profile" className="flex items-center gap-4">
+              <p>
+                Welcome, <span className="font-bold">{profile.first_name}</span>
+              </p>
+              <img
+                src="/images/anonymous-profile.jpg"
+                className="rounded-full"
+                alt="profile"
+                width={50}
+                height={50}
+              />
+            </Link>
+          )}
         </ul>
 
         <button
