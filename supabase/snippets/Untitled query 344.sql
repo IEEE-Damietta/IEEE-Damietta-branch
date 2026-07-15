@@ -1,0 +1,1 @@
+GRANT UPDATE ON public.automation_dates TO authenticated;

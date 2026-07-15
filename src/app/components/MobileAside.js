@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import NavLink from "./NavLink";
-import { useAuth } from "../hooks/AuthContext";
 
-export default function MobileAside({ open, onClose }) {
-
-  const auth = useAuth();
+export default function MobileAside({user, open, onClose}) {
 
   useEffect(() => {
     function onKey(e) {
@@ -91,13 +88,13 @@ export default function MobileAside({ open, onClose }) {
                 className="block w-full px-5 py-3"
               />
             </li>
-            {auth.user && (
+            {user && (
               <li
                 style={{ transitionDelay: "140ms" }}
                 className={`transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
               >
                 <NavLink
-                  name="profile"
+                  name="Profile"
                   route="/profile"
                   asListItem={false}
                   className="block w-full px-5 py-3"
@@ -127,17 +124,31 @@ export default function MobileAside({ open, onClose }) {
               />
             </li>
 
-            <li
-              style={{ transitionDelay: "320ms" }}
-              className={`mt-4 transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
-            >
-              <Link
-                href="/register"
-                className="block px-5 py-3 rounded-full bg-ieee-primary text-white font-bold text-center"
+            {!user ? (
+              <li
+                style={{ transitionDelay: "320ms" }}
+                className={`mt-4 transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
               >
-                Join now
-              </Link>
-            </li>
+                <Link
+                  href="/register"
+                  className="block px-5 py-3 rounded-full bg-ieee-primary text-white font-bold text-center"
+                >
+                  Join now
+                </Link>
+              </li>
+            ) : (
+              <li
+                style={{ transitionDelay: "260ms" }}
+                className={`transform transition duration-300 ${open ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
+              >
+                <NavLink
+                  name="Automation"
+                  route="/automation"
+                  asListItem={false}
+                  className="block w-full px-5 py-3"
+                />
+              </li>
+            )}
           </ul>
 
           <div className="mt-auto text-sm text-gray-400">© IEEE Damietta</div>

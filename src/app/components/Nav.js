@@ -1,18 +1,15 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import NavLink from "./NavLink";
 import Link from "next/link";
 import MobileAside from "./MobileAside";
-import { useAuth } from "../hooks/AuthContext";
-import { useEffect } from "react";
-import {supabase} from '../supabase'
+import { useAuth } from "../utils/hooks/useAuth";
+import MobileNavButton from "./MobileNavButton";
+import { DropdownMenuDemo } from "./NavDropDownMenu";
 
-const Nav = () => {
-  const [open, setOpen] = useState(false);
+const Nav = async () => {
+  const { getUserData } = useAuth();
 
-  const { user, profile } = useAuth();
+  const user = await getUserData();
 
   return (
     <nav className="mx-4 md:mx-32 px-6 bg-slate-700/20 backdrop-blur-lg border-b border-[#ffffff1a] shadow sticky top-3 rounded-full z-100">
@@ -41,60 +38,23 @@ const Nav = () => {
               Join now
             </Link>
           )}
-          {profile && (
-            <Link href="/profile" className="flex items-center gap-4">
-              <p>
-                Welcome, <span className="font-bold">{profile.first_name}</span>
-              </p>
-              <img
-                src="/images/anonymous-profile.jpg"
-                className="rounded-full"
-                alt="profile"
-                width={50}
-                height={50}
-              />
-            </Link>
+          {user && (
+            <>
+              <DropdownMenuDemo />
+              <Link href="/profile" className="flex items-center gap-4">
+                <img
+                  src="/images/anonymous-profile.jpg"
+                  className="rounded-full"
+                  alt="profile"
+                  width={50}
+                  height={50}
+                />
+              </Link>
+            </>
           )}
         </ul>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="menu-toggle text-white md:hidden p-2 rounded-full hover:bg-white/5 transition"
-        >
-          {open ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </button>
-
-        <MobileAside open={open} onClose={() => setOpen(false)} />
+        <MobileNavButton user={user} />
       </div>
     </nav>
   );

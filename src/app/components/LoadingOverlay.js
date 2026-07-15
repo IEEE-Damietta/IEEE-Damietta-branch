@@ -1,10 +1,10 @@
 "use client";
 import { useEffect } from "react";
-import { useAuth } from "../hooks/AuthContext";
+
 import "./LoadingOverlay.css";
 
 const LoadingOverlay = () => {
-  const { loading } = useAuth();
+  const loading = false;
 
   return (
     <>

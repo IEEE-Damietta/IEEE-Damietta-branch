@@ -1,0 +1,1 @@
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE "public"."events" TO authenticated;

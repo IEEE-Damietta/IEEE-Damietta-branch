@@ -1,7 +1,6 @@
 import "./globals.css";
-import ParticleBackground from "./components/bubbles";
 import PageTransition from "./components/PageTransition";
-import { AuthProvider } from "./hooks/AuthContext";
+import GlobalBackground from "./components/GlobalBackground";
 import LoadingOverlay from "./components/LoadingOverlay";
 
 // Convert HTML metadata tags into Next.js metadata format
@@ -73,21 +72,17 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: "#0f172a",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full antialiased dark">
-      <body className="bg-slate-800 text-white">
-        <AuthProvider>
+      <body className="min-h-screen bg-slate-800 text-white">
           <LoadingOverlay />
           <PageTransition>{children}</PageTransition>
-          <ParticleBackground />
-        </AuthProvider>
-
-        <div className="ieee-bg-text">IEEE</div>
-        <div className="blobs">
-          <div className="blob-1" />
-          <div className="blob-2" />
-        </div>
+          <GlobalBackground />
       </body>
     </html>
   );

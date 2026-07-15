@@ -52,9 +52,6 @@ const EventCard = ({
             <span>{locationDetails}</span>
           </div>
         </div>
-        <div className="description py-3 border-b border-gray-500">
-          {description}
-        </div>
         <div className="attending flex items-center gap-2 py-3">
           <Image
             src="/images/icons/attending.png"

@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,7 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { z } from "zod";
-import { supabase } from "../../supabase";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { supabase } from "../../utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
@@ -35,9 +36,13 @@ export function LoginForm({ className, ...props }) {
 
   const router = useRouter();
 
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleFormSubmit = async (values) => {
-    const {data, error} = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: values.email,
       password: values.password,
     });
@@ -50,8 +55,7 @@ export function LoginForm({ className, ...props }) {
     }
 
     router.push("/");
-
-  }
+  };
 
   return (
     <form
@@ -78,9 +82,11 @@ export function LoginForm({ className, ...props }) {
           />
           <FieldError errors={errors.email ? [errors.email] : []} />
         </Field>
+
         <Field>
           <div className="flex items-center">
             <FieldLabel htmlFor="password">Password</FieldLabel>
+
             <a
               href="#"
               className="ml-auto text-sm underline-offset-4 hover:underline"
@@ -88,15 +94,27 @@ export function LoginForm({ className, ...props }) {
               Forgot your password?
             </a>
           </div>
-          <Input
-            id="password"
-            type="password"
-            className="bg-background"
-            {...register("password")}
-            aria-invalid={errors.password ? "true" : undefined}
-          />
+          <div className="relative flex items-center justify-end">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              className="bg-background"
+              {...register("password")}
+              aria-invalid={errors.password ? "true" : undefined}
+            />
+            {showPassword ? (
+              <FaEyeSlash
+                onClick={togglePassword}
+                className="absolute mr-3.5"
+              />
+            ) : (
+              <FaEye onClick={togglePassword} className="absolute mr-3.5" />
+            )}
+          </div>
+
           <FieldError errors={errors.password ? [errors.password] : []} />
         </Field>
+
         <FieldError errors={errors.root ? [errors.root.message] : []} />
         <Field>
           <Button type="submit">Login</Button>

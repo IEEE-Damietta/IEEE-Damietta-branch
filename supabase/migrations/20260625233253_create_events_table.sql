@@ -25,6 +25,8 @@ create table public.events (
 
     instructor_name text,
 
+    event_link text,
+
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 );

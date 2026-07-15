@@ -1,5 +1,7 @@
 // import { LoginForm } from "@/app/login/components/login-form";
 import RegisterForm from "./components/register-form";
+import { useAuth } from "@/app/utils/hooks/useAuth";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Register",
@@ -15,7 +17,12 @@ export const metadata = {
   },
 };
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const { getUserData } = useAuth();
+
+  const user = await getUserData();
+
+  if (user) redirect("/");
   return (
     <div className="grid min-h-svh lg:grid-cols-2 bg-gray-900/95">
       <div className="flex flex-col gap-4 p-6 md:p-10">

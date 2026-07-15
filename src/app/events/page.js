@@ -2,6 +2,8 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import EventsPagination from "./components/Pagination";
 import EventsWrapper from "./components/EventsWrapper";
+import { useEvent } from "@/app/utils/hooks/useEvent";
+
 export const metadata = {
   title: "Events",
   description:
@@ -38,13 +40,17 @@ export const metadata = {
   },
 };
 
-const page = () => {
+const page = async () => {
+  const {getEvents} = useEvent();
+
+  const events = await getEvents();
+
   return (
     <>
       <Nav />
       <section id="events" className="page-section">
         <div className="container">
-          <EventsWrapper />
+          <EventsWrapper events={events}/>
 
           <EventsPagination />
         </div>

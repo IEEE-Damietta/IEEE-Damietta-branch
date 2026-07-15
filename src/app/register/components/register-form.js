@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -22,7 +23,8 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { supabase } from "../../supabase";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { supabase } from "../../utils/supabase/client";
 import { useRouter } from "next/navigation";
 
 const registerSchema = z.object({
@@ -32,27 +34,6 @@ const registerSchema = z.object({
   lastName: z.string().min(2, "Last name must contain at least 2 characters."),
   email: z.string().email("Enter a valid email address."),
   password: z.string().min(8, "Password must contain at least 8 characters."),
-  phone: z
-    .string()
-    .regex(/^[+]?\d{7,15}$/, "Enter a valid phone number with country code."),
-  nationalId: z.string().min(4, "National Id is required."),
-  universityId: z.string().min(4, "University Id is required."),
-  faculty: z
-    .string()
-    .nonempty("Required")
-    .refine((val) => ["cs", "engineering", "other"].includes(val), {
-      message: "Required",
-    }),
-
-  year: z
-    .string()
-    .nonempty("Required")
-    .refine(
-      (val) => ["first", "second", "third", "fourth", "fifth"].includes(val),
-      {
-        message: "Required",
-      },
-    ),
 });
 
 export default function RegisterForm({ className, onSubmit, ...props }) {
@@ -71,13 +52,13 @@ export default function RegisterForm({ className, onSubmit, ...props }) {
       lastName: "",
       email: "",
       password: "",
-      phone: "",
-      nationalId: "",
-      universityId: "",
-      faculty: "",
-      year: "",
     },
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleFormSubmit = async (values) => {
     if (onSubmit) {
@@ -89,36 +70,26 @@ export default function RegisterForm({ className, onSubmit, ...props }) {
     const { data, error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
+      options: {
+        data: {
+          username: `${values.firstName} ${values.lastName}`,
+        },
+      },
     });
 
     if (error) {
-      setError('root', {
+      setError("root", {
         message: error,
-      })
-    }
-
-    if (data.user) {
-      const {error} = await supabase.from("users").insert({
-        id: data.user.id,
-        first_name: values.firstName,
-        last_name: values.lastName,
-        faculty: values.faculty,
-        academic_year: values.year,
-        phone: values.phone,
-        university_id: values.universityId,
-        national_id: values.nationalId,
       });
-
-      if (error) {
-        setError("root", {
-          message: error,
-        });
-      } else {
-         router.push("/");
-      }
-
     }
 
+    if (error) {
+      setError("root", {
+        message: error,
+      });
+    } else {
+      router.push("/");
+    }
   };
 
   return (
@@ -174,100 +145,25 @@ export default function RegisterForm({ className, onSubmit, ...props }) {
 
         <Field>
           <FieldLabel htmlFor="password">Password</FieldLabel>
-          <Input
-            id="password"
-            type="password"
-            className="bg-background"
-            {...register("password")}
-            aria-invalid={errors.password ? "true" : undefined}
-          />
+          <div className="relative flex items-center justify-end">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              className="bg-background"
+              {...register("password")}
+              aria-invalid={errors.password ? "true" : undefined}
+            />
+            {showPassword ? (
+              <FaEyeSlash
+                onClick={togglePassword}
+                className="absolute mr-3.5"
+              />
+            ) : (
+              <FaEye onClick={togglePassword} className="absolute mr-3.5" />
+            )}
+          </div>
           <FieldError errors={errors.password ? [errors.password] : []} />
         </Field>
-
-        <Field>
-          <FieldLabel htmlFor="phone">Phone</FieldLabel>
-          <Input
-            id="phone"
-            type="tel"
-            placeholder="+201234567890"
-            className="bg-background"
-            {...register("phone")}
-            aria-invalid={errors.phone ? "true" : undefined}
-          />
-          <FieldError errors={errors.phone ? [errors.phone] : []} />
-        </Field>
-
-        <FieldGroup className="grid grid-cols-2 gap-6">
-          <Field>
-            <FieldLabel htmlFor="nation-id">National Id</FieldLabel>
-            <Input
-              id="nation-id"
-              {...register("nationalId")}
-              aria-invalid={errors.nationalId ? "true" : undefined}
-            />
-            <FieldError errors={errors.nationalId ? [errors.nationalId] : []} />
-          </Field>
-          <Field>
-            <FieldLabel htmlFor="uni-id">University Id</FieldLabel>
-            <Input
-              id="uni-id"
-              {...register("universityId")}
-              aria-invalid={errors.universityId ? "true" : undefined}
-            />
-            <FieldError
-              errors={errors.universityId ? [errors.universityId] : []}
-            />
-          </Field>
-        </FieldGroup>
-
-        <FieldGroup className="grid grid-cols-2 gap-6">
-          <Field>
-            <FieldLabel htmlFor="faculty">Faculty</FieldLabel>
-            <Controller
-              name="faculty"
-              control={control}
-              render={({ field }) => (
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select faculty" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="cs">Computer Science</SelectItem>
-                      <SelectItem value="engineering">Engineering</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              )}
-            />
-            <FieldError errors={errors.faculty ? [errors.faculty] : []} />
-          </Field>
-          <Field>
-            <FieldLabel htmlFor="year">Year</FieldLabel>
-            <Controller
-              name="year"
-              control={control}
-              render={({ field }) => (
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select year" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="first">First year</SelectItem>
-                      <SelectItem value="second">Second year</SelectItem>
-                      <SelectItem value="third">Third year</SelectItem>
-                      <SelectItem value="fourth">Fourth year</SelectItem>
-                      <SelectItem value="fifth">Fifth year</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              )}
-            />
-            <FieldError errors={errors.year ? [errors.year] : []} />
-          </Field>
-        </FieldGroup>
 
         <FieldError errors={errors.root ? [errors.root.message] : []} />
 
