@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { CalendarDays, Clock3, MapPin, Sparkles, Trash2 } from "lucide-react";
+import { Field, FieldLabel } from "@/components/ui/field";
 import { supabase } from "@/app/utils/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,23 +24,6 @@ import {
 } from "@/components/ui/select";
 import { formateDateAndTime } from "@/app/utils/helpers/formateDateAndTime";
 
-const timeOptions = [
-  "08:00 AM",
-  "09:00 AM",
-  "10:00 AM",
-  "11:00 AM",
-  "12:00 PM",
-  "01:00 PM",
-  "02:00 PM",
-  "03:00 PM",
-  "03:30 PM",
-  "04:00 PM",
-  "05:00 PM",
-  "05:15 PM",
-  "06:00 PM",
-  "06:45 PM",
-];
-
 const days = [
   "Sunday",
   "Monday",
@@ -53,7 +37,23 @@ const days = [
 const AutomationWorkshopForm = ({ dates }) => {
   const router = useRouter();
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("10:00 AM");
+  const [time, setTime] = useState("10:00");
+
+  const formatTimeForDisplay = (value) => {
+    if (!value) return "";
+
+    const [rawHours, rawMinutes] = value.split(":");
+    const hours = Number(rawHours);
+    const minutes = rawMinutes || "00";
+    const suffix = hours >= 12 ? "PM" : "AM";
+
+    if (hours === 0) {
+      return `00:${minutes} ${suffix}`;
+    }
+
+    const displayHour = hours > 12 ? hours - 12 : hours;
+    return `${String(displayHour).padStart(2, "0")}:${minutes} ${suffix}`;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -64,7 +64,7 @@ const AutomationWorkshopForm = ({ dates }) => {
 
     try {
       const { data, error } = await supabase.from("automation_dates").insert({
-        date: formateDateAndTime(date, time).isoString,
+        date: formateDateAndTime(date, formatTimeForDisplay(time)).isoString,
       });
       router.refresh();
     } catch (error) {
@@ -134,6 +134,24 @@ const AutomationWorkshopForm = ({ dates }) => {
               Workshop hour
             </label>
             <div className="relative">
+              <Field className="w-32">
+                <FieldLabel htmlFor="time-picker-optional">Time</FieldLabel>
+                <div className="relative flex items-center">
+                  <Clock3 className="pointer-events-none absolute left-3 size-4 text-muted-foreground" />
+                  <Input
+                    type="time"
+                    id="time-picker-optional"
+                    step="1"
+                    value={time}
+                    onChange={(event) => setTime(event.target.value)}
+                    className="pl-9 appearance-none bg-background [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                  />
+                </div>
+              </Field>
+            </div>
+          </div>
+
+          {/* <div className="relative">
               <Clock3 className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Select value={time} onValueChange={setTime}>
                 <SelectTrigger className="h-11 rounded-xl pl-9">
@@ -148,7 +166,7 @@ const AutomationWorkshopForm = ({ dates }) => {
                 </SelectContent>
               </Select>
             </div>
-          </div>
+          </div> */}
 
           <Button type="submit" className="w-full rounded-xl">
             Add workshop slot
