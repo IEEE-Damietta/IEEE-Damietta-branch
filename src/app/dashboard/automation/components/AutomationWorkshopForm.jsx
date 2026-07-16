@@ -32,9 +32,12 @@ const timeOptions = [
   "01:00 PM",
   "02:00 PM",
   "03:00 PM",
+  "03:30 PM",
   "04:00 PM",
   "05:00 PM",
+  "05:15 PM",
   "06:00 PM",
+  "06:45 PM",
 ];
 
 const days = [
