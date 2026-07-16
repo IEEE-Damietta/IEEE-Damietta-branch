@@ -47,7 +47,7 @@ const days = [
   "Saturday",
 ];
 
-const AutomationWorkshopForm = ({ user, dates }) => {
+const AutomationWorkshopForm = ({ dates }) => {
   const router = useRouter();
   const [date, setDate] = useState("");
   const [time, setTime] = useState("10:00 AM");
@@ -59,15 +59,9 @@ const AutomationWorkshopForm = ({ user, dates }) => {
       return;
     }
 
-    console.log({
-      date: formateDateAndTime(date, time).isoString,
-      id: user.id,
-    });
-
     try {
       const { data, error } = await supabase.from("automation_dates").insert({
         date: formateDateAndTime(date, time).isoString,
-        available: true,
       });
       router.refresh();
     } catch (error) {
@@ -85,6 +79,18 @@ const AutomationWorkshopForm = ({ user, dates }) => {
     } catch (error) {
       console.log("deletion error", error.message);
     }
+  };
+
+  const checkSlotAvailable = (slot) => {
+    if (slot.automation_dates_reservations.length >= 2) {
+      return false;
+    }
+    return true;
+  };
+
+  const renderUserbyId = async (id) => {
+    const { data } = await supabase.from("profiles").select("username");
+    return data.username;
   };
 
   return (
@@ -173,21 +179,18 @@ const AutomationWorkshopForm = ({ user, dates }) => {
                       {days[new Date(slot.date).getDay()]}
                     </p>
                     <Badge
-                      variant={slot.available ? "default" : "secondary"}
+                      variant={
+                        checkSlotAvailable(slot) ? "default" : "secondary"
+                      }
                       className={
-                        slot.available
+                        checkSlotAvailable(slot)
                           ? "rounded-full"
                           : "rounded-full bg-muted text-muted-foreground"
                       }
                     >
-                      {slot.available ? "Available" : "Sold out"}
+                      {checkSlotAvailable(slot) ? "Available" : "Sold out"}
                     </Badge>
                   </div>
-                  {/* {!slot.available && (
-                    <p className="text-sm text-muted-foreground">
-                      Reserved By: Ahmed Safwat.
-                    </p>
-                  )} */}
                   <p className="text-sm text-muted-foreground">
                     {new Date(slot.date).toLocaleDateString()} -{" "}
                     {new Date(slot.date).toLocaleTimeString("en-US", {
@@ -196,6 +199,14 @@ const AutomationWorkshopForm = ({ user, dates }) => {
                       hour12: true,
                     })}
                   </p>
+                  {slot.automation_dates_reservations.length != 0 && (
+                    <ul>
+                      Reserved by:
+                      {slot.automation_dates_reservations.map((user) => (
+                        <li key={user.user_id}>{user.profiles.username}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <Button
                   type="button"

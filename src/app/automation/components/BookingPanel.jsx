@@ -13,38 +13,46 @@ const days = [
   "Saturday",
 ];
 
-const BookingPanel = ({ dates, user, reservedDate }) => {
+const BookingPanel = ({ dates, user }) => {
   const [selectedSlotId, setSelectedSlotId] = useState({});
   const [reserved, setIsReserved] = useState(null);
 
+  console.log(dates);
+
+  const filteredDates = dates.filter(
+    (date) => date.automation_dates_reservations.length < 2,
+  );
+
   useEffect(() => {
-    console.log(reservedDate);
-    if (reservedDate.length > 0) {
-      setSelectedSlotId({
-        id: reservedDate[0].id,
-        date: new Date(reservedDate[0].date).toLocaleDateString(),
-        day: days[new Date(reservedDate[0].date).getDay()],
-        hour: new Date(reservedDate[0].date).toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-        }),
+    const userReservation = dates.forEach((date) => {
+      date.automation_dates_reservations.forEach((usr) => {
+        if (usr.user_id == user.id) {
+          setSelectedSlotId({
+            id: date.id,
+            date: new Date(date.date).toLocaleDateString(),
+            day: days[new Date(date.date).getDay()],
+            hour: new Date(date.date).toLocaleTimeString("en-US", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            }),
+          });
+          setIsReserved(true);
+        }
       });
-      setIsReserved(true);
-    }
-  }, [reservedDate]);
+    });
+  }, [])
 
   const onConfirm = async (id) => {
-    if (!selectedSlotId) return;
+    if (!selectedSlotId.id) return;
+
     try {
       const { data, error } = await supabase
-        .from("automation_dates")
-        .update({
-          available: false,
-          reserved_by: user.id,
-        })
-        .eq("id", id)
-        .eq("available", true);
+        .from("automation_dates_reservations")
+        .insert({
+          date_id: selectedSlotId.id,
+          user_id: user.id,
+        });
       if (!error) setIsReserved(true);
     } catch (error) {
       alert("لم يتم حجز الموعد جرب معاد اخر.");
@@ -54,15 +62,10 @@ const BookingPanel = ({ dates, user, reservedDate }) => {
   const onCancel = async (id) => {
     if (!selectedSlotId) return;
     const { data, error } = await supabase
-      .from("automation_dates")
-      .update({
-        available: true,
-        reserved_by: "ahmed",
-      })
-      .eq("id", id)
-      .eq("available", false);
+      .from("automation_dates_reservations")
+      .delete()
+      .eq("date_id", id);
     if (!error) setIsReserved(false);
-
   };
 
   return (
@@ -98,7 +101,7 @@ const BookingPanel = ({ dates, user, reservedDate }) => {
             </div>
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {dates.map((slot) => (
+              {filteredDates.map((slot) => (
                 <button
                   key={slot.id}
                   type="button"

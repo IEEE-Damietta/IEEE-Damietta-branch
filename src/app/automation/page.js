@@ -9,15 +9,17 @@ const page = async () => {
   const user = await getUserData();
 
   const supabase = await createServer();
-  const { data } = await supabase.from("automation_dates").select("*").eq('available', true);
-  const { data: reservedDate } = await supabase
-    .from("automation_dates")
-    .select("*")
-    .eq("reserved_by", user.id);
+  const { data, error } = await supabase.from("automation_dates").select(
+    `
+    *,
+    automation_dates_reservations(user_id)
+  `,
+  );
+
   return (
     <>
       <Nav />
-      <BookingPanel dates={data} user={user} reservedDate={reservedDate} />
+      <BookingPanel dates={data} user={user} />
       <Footer />
     </>
   );

@@ -77,15 +77,17 @@ export default function RegisterForm({ className, onSubmit, ...props }) {
       },
     });
 
-    if (error) {
-      setError("root", {
-        message: error,
+    const { data: profileData, error: profileError } = await supabase
+      .from("profiles")
+      .insert({
+        id: data.user?.id,
+        username: `${values.firstName} ${values.lastName}`,
+        role: `user`,
       });
-    }
 
-    if (error) {
+    if (error || profileError) {
       setError("root", {
-        message: error,
+        message: error || profileError.message,
       });
     } else {
       router.push("/");

@@ -1,16 +1,17 @@
-import { useAuth } from "@/app/utils/hooks/useAuth";
 import { createServer } from "@/app/utils/supabase/server";
 import AutomationWorkshopForm from "./components/AutomationWorkshopForm";
 
 const page = async () => {
-  const { getUserData } = useAuth();
-
-  const user = await getUserData();
-
   const supabase = await createServer();
 
-  const {data} = await supabase.from("automation_dates").select("*");
-  
+  const { data } = await supabase
+    .from("automation_dates")
+    .select(`* ,
+       automation_dates_reservations (user_id,
+       profiles (username))`);
+
+  console.log(data);
+
   return (
     <div className="space-y-6 p-6">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -25,7 +26,7 @@ const page = async () => {
         </div>
       </div>
 
-      <AutomationWorkshopForm user={user} dates={data} />
+      <AutomationWorkshopForm dates={data} />
     </div>
   );
 };

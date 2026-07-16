@@ -165,16 +165,3 @@ with check (((bucket_id = 'event_images'::text) AND (auth.role() = 'authenticate
 
 
 
-drop policy "Users can insert own profile" on "public"."users";
-drop policy "Users can update own profile" on "public"."users";
-drop policy "Users can view own profile" on "public"."users";
-alter table "public"."users" drop constraint "users_academic_year_check";
-alter table "public"."users" drop constraint "users_faculty_check";
-alter table "public"."users" drop constraint "users_id_fkey";
-alter table "public"."users" drop constraint "users_national_id_key";
-alter table "public"."users" drop constraint "users_university_id_key";
-alter table "public"."users" drop constraint "users_pkey";
-drop index if exists "public"."users_national_id_key";
-drop index if exists "public"."users_pkey";
-drop index if exists "public"."users_university_id_key";
-drop table "public"."users";
