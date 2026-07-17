@@ -111,7 +111,7 @@ const BookingPanel = ({ dates, user }) => {
                 </p>
               </div>
               <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-semibold text-emerald-300">
-                {dates.length} available slots
+                {filteredDates.length} available slots
               </span>
             </div>
 
