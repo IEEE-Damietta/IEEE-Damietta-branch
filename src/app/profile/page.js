@@ -5,7 +5,6 @@ import PersonalInfo from "./components/PersonalInfo";
 import UserDetails from "./components/UserDetails";
 import { useAuth } from "@/app/utils/hooks/useAuth";
 
-
 export const metadata = {
   title: "Profile",
   description:
@@ -24,12 +23,17 @@ const page = async () => {
   const {getUserData} = useAuth();
 
   const user = await getUserData();
+
+
   return (
     <>
       <Nav />
       <div className="container py-12!">
         <UserDetails username={user.user_metadata.username} />
-        <PersonalInfo username={user.user_metadata.username} email={user.email}/>
+        <PersonalInfo
+          username={user.user_metadata.username}
+          email={user.email}
+        />
       </div>
       <Footer />
     </>

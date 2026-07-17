@@ -41,12 +41,27 @@ const BookingPanel = ({ dates, user }) => {
         }
       });
     });
-  }, [])
+  }, []);
 
   const onConfirm = async (id) => {
     if (!selectedSlotId.id) return;
 
     try {
+      const { data: availableData, error: availableError } = await supabase
+        .from("automation_dates")
+        .select(
+          `
+    id,
+    automation_dates_reservations(user_id)
+  `,
+        )
+        .eq("id", id);
+
+      if (availableData[0].automation_dates_reservations.length >= 2) {
+        alert("هذا المعاد ممتلئ بالفعل!");
+        return;
+      }
+
       const { data, error } = await supabase
         .from("automation_dates_reservations")
         .insert({
