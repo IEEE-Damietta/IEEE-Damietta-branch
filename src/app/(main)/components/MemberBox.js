@@ -1,10 +1,16 @@
 "use client";
 import Image from "next/image";
-import { IoMdMail } from "react-icons/io";
 import { motion } from "framer-motion";
-import MembersContactModal from "./MembersContactModal";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTimes } from "react-icons/fa";
 
-const MemberBox = ({ name, role, photo, delay,modal, modalOnOpen, modalOnClose, memberDetails, customeImageClass="" }) => {
+const MemberBox = ({
+  name,
+  role,
+  photo,
+  delay,
+  memberDetails,
+  customeImageClass = "",
+}) => {
   return (
     <>
       <motion.div
@@ -16,38 +22,45 @@ const MemberBox = ({ name, role, photo, delay,modal, modalOnOpen, modalOnClose, 
           delay: delay,
         }}
         viewport={{ once: true, amount: 0.2 }}
-        className="text-center flex-1 min-w-62.5 max-w-75 p-6 rounded-2xl bg-white/10 border border-white/15 shadow-lg text-white relative overflow-hidden"
+        className="relative text-center flex-1 min-w-62.5 max-w-75 p-6 rounded-2xl bg-gradient-to-tl from-slate-700 to-slate-800 shadow text-white relative overflow-hidden"
       >
-        <div className="h-56 w-56 m-auto">
+        <p className="absolute top-0 left-0 bg-gray-200 text-ieee-primary py-2 px-4 rounded-br-3xl">
+          {role}
+        </p>
+        <div className="h-56 w-56 m-auto flex justify-center items-center">
           <Image
             src={`/images/branch-members/${photo}`}
             alt={name}
-            className={`rounded-full object-cover w-full h-full ${customeImageClass}`}
+            className={`rounded-full object-cover w-full h-full ${customeImageClass} size-36!`}
             width={250}
             height={250}
           />
         </div>
         <div className="p-5">
           <h3 className="text-white mb-2.5 text-xl">{name}</h3>
-          <p className="text-ieee-primary mb-1.25 text-[16px] font-bold">
-            {role}
-          </p>
           <p className="text-[#666] mb-3.5 text-[14px]">2025-2026</p>
         </div>
-        <div className="team-contact">
-          <button
-            onClick={modalOnOpen}
-            className="text-white cursor-pointer bg-ieee-primary border-none rounded-full px-5 py-2.5 text-sm transition-colors duration-300"
+        <div className="flex item-center justify-center gap-3 mb-3">
+          <a
+            href={memberDetails.facebook}
+            className="bg-gray-200 p-2 text-2xl rounded-full"
           >
-            <IoMdMail className="inline-block" /> Contact me
-          </button>
+            <FaFacebook className="text-[#1877F2] " />
+          </a>
+          <a
+            href={memberDetails.instagram}
+            className="bg-gray-200 p-2 text-2xl rounded-full"
+          >
+            <FaInstagram className="text-[#DD2A7B]" />
+          </a>
+          <a
+            href={memberDetails.linkedin}
+            className="bg-gray-200 p-2 text-2xl rounded-full"
+          >
+            <FaLinkedin className="text-[#0077B5]" />
+          </a>
         </div>
       </motion.div>
-      <MembersContactModal
-        isOpen={modal}
-        onClose={modalOnClose}
-        member={memberDetails}
-      />
     </>
   );
 };

@@ -1,6 +1,8 @@
 "use client";
+import Image from "next/image";
 import MemberBox from "./MemberBox";
 import { useState } from "react";
+import { Mail } from "lucide-react";
 
 const Members = () => {
   const [openModalFor, setOpenModalFor] = useState(null);
@@ -14,6 +16,45 @@ const Members = () => {
             Meet the team behind IEEE Damietta Student Branch
           </h5>
         </div>
+
+        <section className="pb-12 w-full flex flex-col items-center justify-center text-white">
+          <h2 className="text-3xl font-bold mb-8 text-center tracking-wide">
+            Counselor
+          </h2>
+
+          <div className="bg-[#2c3a4e] rounded-2xl p-6 sm:p-8 w-full flex flex-col justify-center sm:flex-row items-center gap-6 sm:gap-10 shadow-lg">
+            <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1 bg-gradient-to-tr from-[#d4af37] via-[#f3e5ab] to-[#b8860b] shrink-0">
+              <div className="w-full h-full rounded-full overflow-hidden relative">
+                <Image
+                  src="/images/branch-members/PHOTO-2026-07-10-20-14-41.jpg" 
+                  alt="Dr. Marwa fayez"
+                  fill
+                  className="object-cover grayscale"
+                  priority
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-3">
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                Dr. Marwa fayez
+              </h3>
+
+              <a
+                href="mailto:marwa_areed@du.edu.eg"
+                className="flex items-center gap-2.5 bg-transparent hover:bg-[#384860] px-2 py-1 rounded-full transition-colors duration-200"
+              >
+                <div className="bg-gray-200 rounded-full p-1.5 flex items-center justify-center shrink-0 w-8 h-8">
+                  <Mail />
+                </div>
+
+                <span className="text-sm font-medium text-gray-200 hover:underline">
+                  marwa_areed@du.edu.eg
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
 
         <div className="flex justify-center flex-wrap gap-4 relative">
           <MemberBox

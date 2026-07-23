@@ -20,7 +20,7 @@ const BookingPanel = ({ dates, user }) => {
   console.log(dates);
 
   const filteredDates = dates.filter(
-    (date) => date.automation_dates_reservations.length < 2,
+    (date) => date.automation_dates_reservations.length < 1,
   );
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const BookingPanel = ({ dates, user }) => {
         )
         .eq("id", id);
 
-      if (availableData[0].automation_dates_reservations.length >= 2) {
+      if (availableData[0].automation_dates_reservations.length >= 1) {
         alert("هذا المعاد ممتلئ بالفعل!");
         return;
       }
